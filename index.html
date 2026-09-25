@@ -357,16 +357,148 @@
 
   ul.checks li strong { color: var(--text); }
 
+  /* ---------- Footer ---------- */
+
   footer {
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 0.87rem;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-grid {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-col h4 {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .footer-col h4 .icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--accent);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .footer-col li {
+    display: flex;
+    align-items: baseline;
     gap: 0.5rem;
-    margin-top: auto;
-    padding: 2rem 1.5rem;
+  }
+
+  .footer-col .label {
+    min-width: 5.6rem;
+    color: #6b7280;
+  }
+
+  .footer-col .value { color: var(--text); }
+
+  .footer-members li {
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .footer-members li:last-child { border-bottom: none; }
+
+  .footer-members .member {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+  }
+
+  .footer-members .member .icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    color: var(--accent);
+  }
+
+  .footer-members .code {
+    color: var(--accent);
+    font-size: 0.83rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .footer-links a {
     color: var(--muted);
-    font-size: 0.85rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 1.75rem;
     border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+  }
+
+  .footer-bottom .brand-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+  }
+
+  .footer-bottom .brand-line .icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--accent);
+  }
+
+  .footer-bottom .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .footer-bottom .badge .icon {
+    width: 0.85rem;
+    height: 0.85rem;
   }
 
   /* ---------- Responsive ---------- */
@@ -397,6 +529,13 @@
     .nav button { width: auto; }
 
     .content { margin-left: 0; }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .footer-members li { flex-wrap: wrap; }
 
     header { padding: 3.5rem 1.25rem 2.75rem; }
   }
@@ -837,8 +976,67 @@
   </div>
 
   <footer>
-    <svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>
-    Semana 04 · Testing y Calidad de Software · UNTELS
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <h4><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Curso</h4>
+        <ul>
+          <li><span class="label">Asignatura</span> <span class="value">Testing y Calidad de Software</span></li>
+          <li><span class="label">Semana</span> <span class="value">Semana 04</span></li>
+          <li><span class="label">Tema</span> <span class="value">Testing y calidad de software</span></li>
+          <li><span class="label">Universidad</span> <span class="value">UNTELS</span></li>
+          <li><span class="label">Entrega</span> <span class="value">Trabajo grupal</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg> Integrantes</h4>
+        <ul class="footer-members">
+          <li>
+            <span class="member"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> Auccasi Balbin, Eder H.</span>
+            <span class="code">2213010214</span>
+          </li>
+          <li>
+            <span class="member"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> Diaz Sanchez, Leonardo Aramiz</span>
+            <span class="code">2213110169</span>
+          </li>
+          <li>
+            <span class="member"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> Sinarahua Cardenas, Gian Carlos</span>
+            <span class="code">2213110216</span>
+          </li>
+          <li>
+            <span class="member"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> Serrano Garrido, Fernando Jesus</span>
+            <span class="code">2213010687</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-links">
+        <h4><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Contenido</h4>
+        <ul>
+          <li><a href="#" data-view-link="inicio">Inicio</a></li>
+          <li><a href="#" data-view-link="calidad">Calidad de Software</a></li>
+        </ul>
+
+        <h4 style="margin-top:1.5rem"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Referencias</h4>
+        <ul>
+          <li>ISO/IEC 25010 — modelo de calidad</li>
+          <li>ISTQB — fundamentos de testing</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="brand-line">
+        <svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>
+        Semana 04 · Testing y Calidad de Software · UNTELS
+      </span>
+      <span class="badge">
+        <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+        Módulo calidad
+      </span>
+    </div>
   </footer>
 
 </div>
@@ -860,6 +1058,14 @@
   }
 
   buttons.forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+
+  // Enlaces del footer que cambian de vista
+  document.querySelectorAll('[data-view-link]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      showView(a.dataset.viewLink);
+    });
+  });
 </script>
 
 </body>
