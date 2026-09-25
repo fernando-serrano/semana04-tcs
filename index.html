@@ -357,6 +357,99 @@
 
   ul.checks li strong { color: var(--text); }
 
+  /* Quiz */
+
+  .quiz-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1.1rem;
+    transition: border-color 0.2s;
+  }
+
+  .quiz-item .quiz-q {
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+
+  .quiz-options {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .quiz-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.94rem;
+    color: var(--muted);
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .quiz-options label:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .quiz-options input[type="radio"] {
+    accent-color: var(--accent);
+  }
+
+  .quiz-feedback {
+    display: none;
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .quiz-item.correct { border-color: #22c55e; }
+  .quiz-item.incorrect { border-color: #f87171; }
+
+  .quiz-item.correct .quiz-feedback.ok { display: block; color: #22c55e; }
+  .quiz-item.incorrect .quiz-feedback.bad { display: block; color: #f87171; }
+
+  .quiz-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .btn-primary {
+    padding: 0.7rem 1.4rem;
+    background: var(--accent);
+    color: #0b1220;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .quiz-result {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    font-weight: 600;
+  }
+
+  .quiz-result.is-visible { display: inline-flex; }
+  .quiz-result .icon { color: var(--accent); }
+
   /* ---------- Footer ---------- */
 
   footer {
@@ -594,6 +687,12 @@
     </button>
     <button type="button" data-view="niveles">
       <svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Niveles de Prueba
+    </button>
+    <button type="button" data-view="caso">
+      <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Caso de Prueba
+    </button>
+    <button type="button" data-view="quiz">
+      <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Autoevaluación
     </button>
     <button type="button" data-view="glosario">
       <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Glosario
@@ -981,7 +1080,7 @@
     </main>
   </div>
 
-  <!-- ==================== VISTA: NIVELES DE PRUEBA ==================== -->
+  <!-- ==================== VISTA: NIVELES ==================== -->
   <div class="view" id="view-niveles">
     <header>
       <span class="eyebrow">
@@ -990,116 +1089,197 @@
       </span>
       <h1>Niveles de <span>Prueba</span></h1>
       <p>
-        Las pruebas se organizan en niveles según el alcance de lo que se verifica:
-        desde una función aislada hasta el sistema completo en manos del usuario.
+        El modelo en V ordena el testing en cuatro niveles, cada uno enfocado en
+        una escala distinta del sistema, desde el código hasta el usuario final.
       </p>
     </header>
 
     <main>
       <section>
         <h2><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Los cuatro niveles</h2>
-        <p>
-          Cada nivel se apoya en el anterior. Un defecto detectado en un nivel bajo es
-          más barato de corregir, porque el alcance de lo que hay que revisar es menor.
-        </p>
-        <div class="grid" style="margin-top:1.25rem">
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> 1. Unitario</h3>
-            <p>
-              Verifica la unidad más pequeña de código —una función, un método, una clase—
-              de forma aislada, reemplazando sus dependencias. Lo escribe el desarrollador.
-            </p>
-          </div>
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> 2. Integración</h3>
-            <p>
-              Comprueba que varios componentes trabajen juntos correctamente: llamadas entre
-              módulos, acceso a base de datos o consumo de servicios externos.
-            </p>
-          </div>
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg> 3. Sistema</h3>
-            <p>
-              Prueba la aplicación completa e integrada contra los requisitos definidos,
-              en un entorno lo más parecido posible al de producción.
-            </p>
-          </div>
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> 4. Aceptación</h3>
-            <p>
-              El cliente o usuario final valida que el sistema resuelve su necesidad real
-              y que puede ponerse en producción (UAT).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg> La pirámide de pruebas</h2>
-        <p>
-          La pirámide es una guía sobre cuántas pruebas conviene tener de cada tipo. En la
-          base, muchas pruebas unitarias: rápidas, baratas y estables. En la cima, pocas
-          pruebas end-to-end: valiosas pero lentas y frágiles.
-        </p>
-        <ul class="checks" style="margin-top:1.25rem">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> <span><strong>Cima — E2E (pocas):</strong> recorren el flujo completo del usuario. Dan mucha confianza, pero tardan y fallan por causas ajenas al código.</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> <span><strong>Medio — Integración (algunas):</strong> verifican los puntos de unión entre componentes, donde suelen concentrarse los errores.</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> <span><strong>Base — Unitarias (muchas):</strong> se ejecutan en segundos y señalan con precisión dónde está el fallo.</span></li>
-        </ul>
-        <p>
-          El antipatrón opuesto es el <strong>cono de helado</strong>: muchas pruebas manuales
-          y E2E sobre una base casi inexistente de pruebas unitarias. El resultado es una
-          suite lenta, cara de mantener y poco confiable.
-        </p>
-      </section>
-
-      <section>
-        <h2><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> Pruebas transversales</h2>
-        <p>
-          Además de los niveles, existen pruebas que se ejecutan en distintos momentos según
-          la necesidad del proyecto:
-        </p>
-        <div class="grid" style="margin-top:1.25rem">
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> Regresión</h3>
-            <p>Reejecutan pruebas anteriores para confirmar que un cambio nuevo no rompió lo que ya funcionaba.</p>
-          </div>
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Humo (smoke)</h3>
-            <p>Un conjunto mínimo y rápido que valida que la versión es estable y merece seguir probándose.</p>
-          </div>
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg> Rendimiento</h3>
-            <p>Miden tiempos de respuesta y comportamiento del sistema bajo carga concurrente.</p>
-          </div>
-          <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Seguridad</h3>
-            <p>Buscan vulnerabilidades y verifican el control de acceso a la información.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Caja negra y caja blanca</h2>
         <div class="grid">
           <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> Caja negra</h3>
-            <p>
-              Se prueba desde afuera, sin conocer el código: se dan entradas y se comprueba
-              la salida esperada. Predomina en sistema y aceptación.
-            </p>
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> Pruebas de unidad</h3>
+            <p>Verifican la unidad más pequeña de código de forma aislada: una función, un método o una clase.</p>
           </div>
           <div class="card">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> Caja blanca</h3>
-            <p>
-              Se diseña conociendo la estructura interna, buscando cubrir los caminos de
-              ejecución y las condiciones del código. Predomina en el nivel unitario.
-            </p>
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> Pruebas de integración</h3>
+            <p>Verifican que los módulos se comuniquen correctamente entre sí al combinarlos.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg> Pruebas de sistema</h3>
+            <p>Evalúan la aplicación completa ya integrada, frente a los requisitos funcionales definidos.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Pruebas de aceptación</h3>
+            <p>Confirman con el cliente o usuario final que el sistema resuelve lo que realmente necesita.</p>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg> A mayor nivel, mayor costo</h2>
+        <p>
+          A medida que se sube de nivel, las pruebas cubren más piezas del sistema a la vez
+          pero también se vuelven más lentas y costosas de ejecutar y mantener. Por eso se
+          recomienda tener muchas pruebas de unidad, menos de integración, y aún menos de
+          sistema y aceptación — la llamada "pirámide de pruebas".
+        </p>
       </section>
     </main>
   </div>
+
+  <!-- ==================== VISTA: CASO DE PRUEBA ==================== -->
+  <div class="view" id="view-caso">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>
+        Módulo · Ejemplo
+      </span>
+      <h1>Caso de <span>Prueba</span></h1>
+      <p>
+        Un caso de prueba es la unidad básica de documentación del testing: describe
+        qué se prueba, cómo y qué resultado se espera obtener.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> Ejemplo: login de usuario</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted);width:12rem">ID</th>
+                <td>CP-01</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Título</th>
+                <td>Inicio de sesión con credenciales válidas</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Precondición</th>
+                <td>El usuario ya está registrado en el sistema</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Pasos</th>
+                <td>1. Ingresar a la pantalla de login&nbsp;· 2. Escribir usuario y contraseña válidos&nbsp;· 3. Presionar "Ingresar"</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Resultado esperado</th>
+                <td>El sistema redirige al usuario a su panel principal</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Estado</th>
+                <td>Aprobado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Buenas prácticas al redactarlos</h2>
+        <ul class="checks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Un solo objetivo por caso:</strong> más fácil de mantener y de saber por qué falló.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Pasos claros y reproducibles:</strong> cualquiera debería poder ejecutarlo igual.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Resultado esperado verificable:</strong> sin ambigüedad sobre si pasó o falló.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Cubrir casos límite:</strong> no solo el camino feliz, también entradas inválidas y extremos.</span></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==================== VISTA: AUTOEVALUACIÓN ==================== -->
+  <div class="view" id="view-quiz">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+        Módulo · Autoevaluación
+      </span>
+      <h1>Pon a <span>Prueba</span> lo aprendido</h1>
+      <p>
+        Cinco preguntas rápidas para repasar los conceptos vistos en las demás secciones.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> Cuestionario</h2>
+
+        <form id="quiz-form">
+          <div class="quiz-item" data-answer="b">
+            <p class="quiz-q">1. ¿Qué tipo de prueba verifica una función o método de forma aislada?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q1" value="a"> Pruebas de sistema</label>
+              <label><input type="radio" name="q1" value="b"> Pruebas unitarias</label>
+              <label><input type="radio" name="q1" value="c"> Pruebas de aceptación</label>
+              <label><input type="radio" name="q1" value="d"> Pruebas de humo</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. Las pruebas unitarias evalúan piezas pequeñas de código de forma aislada.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "Pruebas unitarias".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="c">
+            <p class="quiz-q">2. ¿Qué norma describe los atributos de calidad de un software?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q2" value="a"> RFC 2119</label>
+              <label><input type="radio" name="q2" value="b"> OWASP Top 10</label>
+              <label><input type="radio" name="q2" value="c"> ISO/IEC 25010</label>
+              <label><input type="radio" name="q2" value="d"> IEEE 830</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. La ISO/IEC 25010 define las características de calidad del software.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "ISO/IEC 25010".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="a">
+            <p class="quiz-q">3. ¿Qué técnica de diseño de pruebas no requiere conocer el código interno?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q3" value="a"> Caja negra</label>
+              <label><input type="radio" name="q3" value="b"> Caja blanca</label>
+              <label><input type="radio" name="q3" value="c"> Caja gris</label>
+              <label><input type="radio" name="q3" value="d"> Caja de cristal</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. La caja negra prueba entradas y salidas sin ver el código interno.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "Caja negra".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="b">
+            <p class="quiz-q">4. Según la pirámide de pruebas, ¿qué nivel debería tener más casos de prueba?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q4" value="a"> Aceptación</label>
+              <label><input type="radio" name="q4" value="b"> Unidad</label>
+              <label><input type="radio" name="q4" value="c"> Sistema</label>
+              <label><input type="radio" name="q4" value="d"> Integración</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. Las pruebas de unidad son rápidas y baratas, por eso deben ser las más numerosas.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "Unidad".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="d">
+            <p class="quiz-q">5. En el ciclo de vida de un defecto, ¿qué sigue después de "Asignado"?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q5" value="a"> Cerrado</label>
+              <label><input type="radio" name="q5" value="b"> Nuevo</label>
+              <label><input type="radio" name="q5" value="c"> Re-testeo</label>
+              <label><input type="radio" name="q5" value="d"> En corrección</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. Tras asignarse, el desarrollador corrige el código.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "En corrección".</p>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="submit" class="btn-primary">Corregir</button>
+            <span class="quiz-result" id="quiz-result">
+              <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+              <span id="quiz-score-text"></span>
+            </span>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
 
   <!-- ==================== VISTA: GLOSARIO ==================== -->
   <div class="view" id="view-glosario">
@@ -1199,7 +1379,9 @@
           <li><a href="#" data-view-link="inicio">Inicio</a></li>
           <li><a href="#" data-view-link="calidad">Calidad de Software</a></li>
           <li><a href="#" data-view-link="proceso">Proceso de Testing</a></li>
-          <li><a href="#" data-view-link="glosario">Glosario</a></li>
+          <li><a href="#" data-view-link="niveles">Niveles de Prueba</a></li>
+          <li><a href="#" data-view-link="caso">Caso de Prueba</a></li>
+          <li><a href="#" data-view-link="quiz">Autoevaluación</a></li>
         </ul>
 
         <h4 style="margin-top:1.5rem"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Referencias</h4>
@@ -1250,6 +1432,29 @@
       showView(a.dataset.viewLink);
     });
   });
+
+  // Autoevaluación: corrige el cuestionario y muestra el puntaje
+  const quizForm = document.getElementById('quiz-form');
+  if (quizForm) {
+    quizForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const items = quizForm.querySelectorAll('.quiz-item');
+      let score = 0;
+
+      items.forEach(item => {
+        const radioName = item.querySelector('input[type="radio"]').name;
+        const selected = quizForm.querySelector(`input[name="${radioName}"]:checked`);
+        item.classList.remove('correct', 'incorrect');
+        if (!selected) return;
+        const isCorrect = selected.value === item.dataset.answer;
+        item.classList.add(isCorrect ? 'correct' : 'incorrect');
+        if (isCorrect) score++;
+      });
+
+      document.getElementById('quiz-score-text').textContent = `${score} / ${items.length} correctas`;
+      document.getElementById('quiz-result').classList.add('is-visible');
+    });
+  }
 </script>
 
 </body>
