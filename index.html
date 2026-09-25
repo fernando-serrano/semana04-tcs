@@ -592,13 +592,11 @@
     <button type="button" data-view="proceso">
       <svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> Proceso de Testing
     </button>
-<<<<<<< HEAD
     <button type="button" data-view="niveles">
       <svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Niveles de Prueba
-=======
+    </button>
     <button type="button" data-view="glosario">
       <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Glosario
->>>>>>> 3f5d263d0d8d5fdae2e75e9ff06beefe152c74cd
     </button>
   </nav>
 
@@ -979,6 +977,126 @@
           <li><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> <span><strong>Re-testeo:</strong> el tester vuelve a ejecutar el caso para confirmar la corrección.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Cerrado:</strong> el defecto queda resuelto y verificado.</span></li>
         </ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==================== VISTA: NIVELES DE PRUEBA ==================== -->
+  <div class="view" id="view-niveles">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>
+        Módulo · Niveles
+      </span>
+      <h1>Niveles de <span>Prueba</span></h1>
+      <p>
+        Las pruebas se organizan en niveles según el alcance de lo que se verifica:
+        desde una función aislada hasta el sistema completo en manos del usuario.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Los cuatro niveles</h2>
+        <p>
+          Cada nivel se apoya en el anterior. Un defecto detectado en un nivel bajo es
+          más barato de corregir, porque el alcance de lo que hay que revisar es menor.
+        </p>
+        <div class="grid" style="margin-top:1.25rem">
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> 1. Unitario</h3>
+            <p>
+              Verifica la unidad más pequeña de código —una función, un método, una clase—
+              de forma aislada, reemplazando sus dependencias. Lo escribe el desarrollador.
+            </p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> 2. Integración</h3>
+            <p>
+              Comprueba que varios componentes trabajen juntos correctamente: llamadas entre
+              módulos, acceso a base de datos o consumo de servicios externos.
+            </p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg> 3. Sistema</h3>
+            <p>
+              Prueba la aplicación completa e integrada contra los requisitos definidos,
+              en un entorno lo más parecido posible al de producción.
+            </p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg> 4. Aceptación</h3>
+            <p>
+              El cliente o usuario final valida que el sistema resuelve su necesidad real
+              y que puede ponerse en producción (UAT).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg> La pirámide de pruebas</h2>
+        <p>
+          La pirámide es una guía sobre cuántas pruebas conviene tener de cada tipo. En la
+          base, muchas pruebas unitarias: rápidas, baratas y estables. En la cima, pocas
+          pruebas end-to-end: valiosas pero lentas y frágiles.
+        </p>
+        <ul class="checks" style="margin-top:1.25rem">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> <span><strong>Cima — E2E (pocas):</strong> recorren el flujo completo del usuario. Dan mucha confianza, pero tardan y fallan por causas ajenas al código.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> <span><strong>Medio — Integración (algunas):</strong> verifican los puntos de unión entre componentes, donde suelen concentrarse los errores.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> <span><strong>Base — Unitarias (muchas):</strong> se ejecutan en segundos y señalan con precisión dónde está el fallo.</span></li>
+        </ul>
+        <p>
+          El antipatrón opuesto es el <strong>cono de helado</strong>: muchas pruebas manuales
+          y E2E sobre una base casi inexistente de pruebas unitarias. El resultado es una
+          suite lenta, cara de mantener y poco confiable.
+        </p>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> Pruebas transversales</h2>
+        <p>
+          Además de los niveles, existen pruebas que se ejecutan en distintos momentos según
+          la necesidad del proyecto:
+        </p>
+        <div class="grid" style="margin-top:1.25rem">
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> Regresión</h3>
+            <p>Reejecutan pruebas anteriores para confirmar que un cambio nuevo no rompió lo que ya funcionaba.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Humo (smoke)</h3>
+            <p>Un conjunto mínimo y rápido que valida que la versión es estable y merece seguir probándose.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg> Rendimiento</h3>
+            <p>Miden tiempos de respuesta y comportamiento del sistema bajo carga concurrente.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Seguridad</h3>
+            <p>Buscan vulnerabilidades y verifican el control de acceso a la información.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Caja negra y caja blanca</h2>
+        <div class="grid">
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> Caja negra</h3>
+            <p>
+              Se prueba desde afuera, sin conocer el código: se dan entradas y se comprueba
+              la salida esperada. Predomina en sistema y aceptación.
+            </p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> Caja blanca</h3>
+            <p>
+              Se diseña conociendo la estructura interna, buscando cubrir los caminos de
+              ejecución y las condiciones del código. Predomina en el nivel unitario.
+            </p>
+          </div>
+        </div>
       </section>
     </main>
   </div>
