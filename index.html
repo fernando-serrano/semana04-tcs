@@ -592,6 +592,9 @@
     <button type="button" data-view="proceso">
       <svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> Proceso de Testing
     </button>
+    <button type="button" data-view="glosario">
+      <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Glosario
+    </button>
   </nav>
 
   <div class="sidebar-foot">
@@ -975,6 +978,62 @@
     </main>
   </div>
 
+  <!-- ==================== VISTA: GLOSARIO ==================== -->
+  <div class="view" id="view-glosario">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>
+        Módulo · Glosario
+      </span>
+      <h1>Glosario de <span>Términos</span></h1>
+      <p>
+        Definiciones breves de los conceptos más usados a lo largo del curso.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Términos clave</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Término</th>
+                <th scope="col">Definición</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name"><svg class="icon" aria-hidden="true"><use href="#i-bug"/></svg> Defecto</td>
+                <td>Falla en el código que provoca un comportamiento distinto al esperado.</td>
+              </tr>
+              <tr>
+                <td class="name"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Error</td>
+                <td>Equivocación humana durante el desarrollo que puede originar un defecto.</td>
+              </tr>
+              <tr>
+                <td class="name"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Falla</td>
+                <td>Desviación observable del comportamiento del sistema respecto a lo esperado.</td>
+              </tr>
+              <tr>
+                <td class="name"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> Caso de prueba</td>
+                <td>Conjunto de condiciones, datos y pasos para verificar un requisito específico.</td>
+              </tr>
+              <tr>
+                <td class="name"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg> Cobertura</td>
+                <td>Medida de cuánto del sistema queda ejercitado por las pruebas existentes.</td>
+              </tr>
+              <tr>
+                <td class="name"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> Regresión</td>
+                <td>Reaparición de un defecto ya corregido, o uno nuevo introducido por un cambio.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
   <footer>
     <div class="footer-grid">
 
@@ -1016,6 +1075,8 @@
         <ul>
           <li><a href="#" data-view-link="inicio">Inicio</a></li>
           <li><a href="#" data-view-link="calidad">Calidad de Software</a></li>
+          <li><a href="#" data-view-link="proceso">Proceso de Testing</a></li>
+          <li><a href="#" data-view-link="glosario">Glosario</a></li>
         </ul>
 
         <h4 style="margin-top:1.5rem"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Referencias</h4>
