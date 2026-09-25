@@ -728,6 +728,78 @@
     </main>
   </div>
 
+  <!-- ==================== VISTA: PROCESO ==================== -->
+  <div class="view" id="view-proceso">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>
+        Módulo · Proceso
+      </span>
+      <h1>Proceso de <span>Testing</span></h1>
+      <p>
+        Cómo se organiza el trabajo de pruebas en la práctica: sus etapas, las
+        técnicas para diseñar casos de prueba y las herramientas más usadas.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> Ciclo de vida del testing</h2>
+        <p>
+          El testing no es un paso único al final del desarrollo: es un proceso con
+          etapas propias que se repiten en cada iteración del proyecto.
+        </p>
+        <div class="grid" style="margin-top:1.25rem">
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> 1. Planificación</h3>
+            <p>Se define el alcance, los objetivos, los recursos y la estrategia general de pruebas.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> 2. Diseño</h3>
+            <p>Se elaboran los casos de prueba a partir de los requisitos y los criterios de aceptación.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> 3. Ejecución</h3>
+            <p>Se corren los casos de prueba, manual o automáticamente, y se registran los resultados.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 4. Cierre</h3>
+            <p>Se analizan los resultados, se reportan defectos y se documentan las lecciones aprendidas.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Técnicas de diseño de pruebas</h2>
+        <div class="grid">
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> Caja negra</h3>
+            <p>Se prueba el comportamiento del software sin conocer su código interno, solo entradas y salidas.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-bug"/></svg> Caja blanca</h3>
+            <p>Se diseñan casos conociendo la estructura interna del código, buscando cubrir sus rutas lógicas.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> Caja gris</h3>
+            <p>Combina ambos enfoques: algo de conocimiento interno junto con pruebas orientadas al usuario.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg> Herramientas comunes</h2>
+        <ul class="checks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> <span><strong>JUnit / NUnit:</strong> frameworks para pruebas unitarias en Java y .NET.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> <span><strong>Jest:</strong> testing unitario y de integración para JavaScript.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg> <span><strong>Selenium / Cypress:</strong> automatización de pruebas end-to-end sobre navegadores.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg> <span><strong>Postman:</strong> pruebas manuales y automatizadas de APIs.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> <span><strong>Jenkins / GitHub Actions:</strong> ejecución automática de pruebas en integración continua.</span></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
   <footer>
     <svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>
     Semana 04 · Testing y Calidad de Software · UNTELS
