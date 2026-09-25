@@ -357,6 +357,99 @@
 
   ul.checks li strong { color: var(--text); }
 
+  /* Quiz */
+
+  .quiz-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1.1rem;
+    transition: border-color 0.2s;
+  }
+
+  .quiz-item .quiz-q {
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+
+  .quiz-options {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .quiz-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.94rem;
+    color: var(--muted);
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .quiz-options label:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .quiz-options input[type="radio"] {
+    accent-color: var(--accent);
+  }
+
+  .quiz-feedback {
+    display: none;
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .quiz-item.correct { border-color: #22c55e; }
+  .quiz-item.incorrect { border-color: #f87171; }
+
+  .quiz-item.correct .quiz-feedback.ok { display: block; color: #22c55e; }
+  .quiz-item.incorrect .quiz-feedback.bad { display: block; color: #f87171; }
+
+  .quiz-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .btn-primary {
+    padding: 0.7rem 1.4rem;
+    background: var(--accent);
+    color: #0b1220;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .quiz-result {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    font-weight: 600;
+  }
+
+  .quiz-result.is-visible { display: inline-flex; }
+  .quiz-result .icon { color: var(--accent); }
+
   /* ---------- Footer ---------- */
 
   footer {
@@ -597,6 +690,9 @@
     </button>
     <button type="button" data-view="caso">
       <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Caso de Prueba
+    </button>
+    <button type="button" data-view="quiz">
+      <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Autoevaluación
     </button>
   </nav>
 
@@ -1091,6 +1187,96 @@
     </main>
   </div>
 
+  <!-- ==================== VISTA: AUTOEVALUACIÓN ==================== -->
+  <div class="view" id="view-quiz">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+        Módulo · Autoevaluación
+      </span>
+      <h1>Pon a <span>Prueba</span> lo aprendido</h1>
+      <p>
+        Cinco preguntas rápidas para repasar los conceptos vistos en las demás secciones.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> Cuestionario</h2>
+
+        <form id="quiz-form">
+          <div class="quiz-item" data-answer="b">
+            <p class="quiz-q">1. ¿Qué tipo de prueba verifica una función o método de forma aislada?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q1" value="a"> Pruebas de sistema</label>
+              <label><input type="radio" name="q1" value="b"> Pruebas unitarias</label>
+              <label><input type="radio" name="q1" value="c"> Pruebas de aceptación</label>
+              <label><input type="radio" name="q1" value="d"> Pruebas de humo</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. Las pruebas unitarias evalúan piezas pequeñas de código de forma aislada.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "Pruebas unitarias".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="c">
+            <p class="quiz-q">2. ¿Qué norma describe los atributos de calidad de un software?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q2" value="a"> RFC 2119</label>
+              <label><input type="radio" name="q2" value="b"> OWASP Top 10</label>
+              <label><input type="radio" name="q2" value="c"> ISO/IEC 25010</label>
+              <label><input type="radio" name="q2" value="d"> IEEE 830</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. La ISO/IEC 25010 define las características de calidad del software.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "ISO/IEC 25010".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="a">
+            <p class="quiz-q">3. ¿Qué técnica de diseño de pruebas no requiere conocer el código interno?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q3" value="a"> Caja negra</label>
+              <label><input type="radio" name="q3" value="b"> Caja blanca</label>
+              <label><input type="radio" name="q3" value="c"> Caja gris</label>
+              <label><input type="radio" name="q3" value="d"> Caja de cristal</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. La caja negra prueba entradas y salidas sin ver el código interno.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "Caja negra".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="b">
+            <p class="quiz-q">4. Según la pirámide de pruebas, ¿qué nivel debería tener más casos de prueba?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q4" value="a"> Aceptación</label>
+              <label><input type="radio" name="q4" value="b"> Unidad</label>
+              <label><input type="radio" name="q4" value="c"> Sistema</label>
+              <label><input type="radio" name="q4" value="d"> Integración</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. Las pruebas de unidad son rápidas y baratas, por eso deben ser las más numerosas.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "Unidad".</p>
+          </div>
+
+          <div class="quiz-item" data-answer="d">
+            <p class="quiz-q">5. En el ciclo de vida de un defecto, ¿qué sigue después de "Asignado"?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q5" value="a"> Cerrado</label>
+              <label><input type="radio" name="q5" value="b"> Nuevo</label>
+              <label><input type="radio" name="q5" value="c"> Re-testeo</label>
+              <label><input type="radio" name="q5" value="d"> En corrección</label>
+            </div>
+            <p class="quiz-feedback ok">✓ Correcto. Tras asignarse, el desarrollador corrige el código.</p>
+            <p class="quiz-feedback bad">✗ Incorrecto. La respuesta correcta es "En corrección".</p>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="submit" class="btn-primary">Corregir</button>
+            <span class="quiz-result" id="quiz-result">
+              <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+              <span id="quiz-score-text"></span>
+            </span>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
   <footer>
     <div class="footer-grid">
 
@@ -1135,6 +1321,7 @@
           <li><a href="#" data-view-link="proceso">Proceso de Testing</a></li>
           <li><a href="#" data-view-link="niveles">Niveles de Prueba</a></li>
           <li><a href="#" data-view-link="caso">Caso de Prueba</a></li>
+          <li><a href="#" data-view-link="quiz">Autoevaluación</a></li>
         </ul>
 
         <h4 style="margin-top:1.5rem"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Referencias</h4>
@@ -1185,6 +1372,29 @@
       showView(a.dataset.viewLink);
     });
   });
+
+  // Autoevaluación: corrige el cuestionario y muestra el puntaje
+  const quizForm = document.getElementById('quiz-form');
+  if (quizForm) {
+    quizForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const items = quizForm.querySelectorAll('.quiz-item');
+      let score = 0;
+
+      items.forEach(item => {
+        const radioName = item.querySelector('input[type="radio"]').name;
+        const selected = quizForm.querySelector(`input[name="${radioName}"]:checked`);
+        item.classList.remove('correct', 'incorrect');
+        if (!selected) return;
+        const isCorrect = selected.value === item.dataset.answer;
+        item.classList.add(isCorrect ? 'correct' : 'incorrect');
+        if (isCorrect) score++;
+      });
+
+      document.getElementById('quiz-score-text').textContent = `${score} / ${items.length} correctas`;
+      document.getElementById('quiz-result').classList.add('is-visible');
+    });
+  }
 </script>
 
 </body>
