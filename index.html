@@ -595,6 +595,9 @@
     <button type="button" data-view="niveles">
       <svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Niveles de Prueba
     </button>
+    <button type="button" data-view="caso">
+      <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Caso de Prueba
+    </button>
   </nav>
 
   <div class="sidebar-foot">
@@ -978,6 +981,116 @@
     </main>
   </div>
 
+  <!-- ==================== VISTA: NIVELES ==================== -->
+  <div class="view" id="view-niveles">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>
+        Módulo · Niveles
+      </span>
+      <h1>Niveles de <span>Prueba</span></h1>
+      <p>
+        El modelo en V ordena el testing en cuatro niveles, cada uno enfocado en
+        una escala distinta del sistema, desde el código hasta el usuario final.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Los cuatro niveles</h2>
+        <div class="grid">
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg> Pruebas de unidad</h3>
+            <p>Verifican la unidad más pequeña de código de forma aislada: una función, un método o una clase.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> Pruebas de integración</h3>
+            <p>Verifican que los módulos se comuniquen correctamente entre sí al combinarlos.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg> Pruebas de sistema</h3>
+            <p>Evalúan la aplicación completa ya integrada, frente a los requisitos funcionales definidos.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Pruebas de aceptación</h3>
+            <p>Confirman con el cliente o usuario final que el sistema resuelve lo que realmente necesita.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg> A mayor nivel, mayor costo</h2>
+        <p>
+          A medida que se sube de nivel, las pruebas cubren más piezas del sistema a la vez
+          pero también se vuelven más lentas y costosas de ejecutar y mantener. Por eso se
+          recomienda tener muchas pruebas de unidad, menos de integración, y aún menos de
+          sistema y aceptación — la llamada "pirámide de pruebas".
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==================== VISTA: CASO DE PRUEBA ==================== -->
+  <div class="view" id="view-caso">
+    <header>
+      <span class="eyebrow">
+        <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>
+        Módulo · Ejemplo
+      </span>
+      <h1>Caso de <span>Prueba</span></h1>
+      <p>
+        Un caso de prueba es la unidad básica de documentación del testing: describe
+        qué se prueba, cómo y qué resultado se espera obtener.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> Ejemplo: login de usuario</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted);width:12rem">ID</th>
+                <td>CP-01</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Título</th>
+                <td>Inicio de sesión con credenciales válidas</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Precondición</th>
+                <td>El usuario ya está registrado en el sistema</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Pasos</th>
+                <td>1. Ingresar a la pantalla de login&nbsp;· 2. Escribir usuario y contraseña válidos&nbsp;· 3. Presionar "Ingresar"</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Resultado esperado</th>
+                <td>El sistema redirige al usuario a su panel principal</td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align:left;color:var(--muted)">Estado</th>
+                <td>Aprobado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Buenas prácticas al redactarlos</h2>
+        <ul class="checks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Un solo objetivo por caso:</strong> más fácil de mantener y de saber por qué falló.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Pasos claros y reproducibles:</strong> cualquiera debería poder ejecutarlo igual.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Resultado esperado verificable:</strong> sin ambigüedad sobre si pasó o falló.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span><strong>Cubrir casos límite:</strong> no solo el camino feliz, también entradas inválidas y extremos.</span></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
   <footer>
     <div class="footer-grid">
 
@@ -1019,6 +1132,9 @@
         <ul>
           <li><a href="#" data-view-link="inicio">Inicio</a></li>
           <li><a href="#" data-view-link="calidad">Calidad de Software</a></li>
+          <li><a href="#" data-view-link="proceso">Proceso de Testing</a></li>
+          <li><a href="#" data-view-link="niveles">Niveles de Prueba</a></li>
+          <li><a href="#" data-view-link="caso">Caso de Prueba</a></li>
         </ul>
 
         <h4 style="margin-top:1.5rem"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Referencias</h4>
